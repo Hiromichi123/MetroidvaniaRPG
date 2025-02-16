@@ -6,10 +6,12 @@ public class PlayerState {
     protected PlayerStateMachine stateMachine;
     protected Player player;
 
-    protected float xInput;
-    protected float yInput = 1;
+    protected Rigidbody2D rb;
 
+    protected float xInput;
     private string animBoolName;
+
+    protected float stateTimer;
 
     public PlayerState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) {
         this.player = _player;
@@ -19,10 +21,18 @@ public class PlayerState {
 
     public virtual void Enter() {
         player.anim.SetBool(animBoolName, true);
+        rb = player.rb;
     }
 
     public virtual void Update() {
+        stateTimer -= Time.deltaTime;
+
         xInput = Input.GetAxisRaw("Horizontal");
+        player.anim.SetFloat("yVelocity", rb.velocity.y);
+
+        if (rb.velocity.y != 0) { // 任何情况下落都进入airState
+            stateMachine.ChangeState(player.airState);
+        }
     }
 
     public virtual void Exit() {
