@@ -17,7 +17,14 @@ public class PlayerWallSlideState : PlayerState {
     public override void Update() {
         base.Update();
 
-        if (xInput != 0 && xInput != player.facingDir) { // 需要从墙上脱离
+        if (Input.GetKeyDown(KeyCode.Space))
+        {   // 滑墙时跳跃
+            stateMachine.ChangeState(player.wallJumpState);
+            return;
+        }
+
+        if (xInput != 0 && xInput != player.facingDir)
+        { // 需要从墙上脱离
             stateMachine.ChangeState(player.idleState);
         }
 

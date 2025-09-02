@@ -29,10 +29,6 @@ public class PlayerState {
 
         xInput = Input.GetAxisRaw("Horizontal");
         player.anim.SetFloat("yVelocity", rb.velocity.y);
-
-        if (rb.velocity.y != 0) { // 任何情况下落都进入airState
-            stateMachine.ChangeState(player.airState);
-        }
     }
 
     public virtual void Exit() {

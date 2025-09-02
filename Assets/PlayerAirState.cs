@@ -10,7 +10,7 @@ public class PlayerAirState : PlayerState {
         base.Enter();
     }
 
-    public override void Exit() {
+    public override void Exit(){
         base.Exit();
     }
 
@@ -19,8 +19,8 @@ public class PlayerAirState : PlayerState {
 
         if (player.IsGroundedDetected()) stateMachine.ChangeState(player.idleState);
 
-        if (player.IsWallDetected()) stateMachine.ChangeState(player.wallSlideState);
-
         if (xInput != 0) player.SetVelocity(player.moveSpeed * .8f * xInput, rb.velocity.y); // 空中速度0.8
+
+        if (player.IsWallDetected()) stateMachine.ChangeState(player.wallSlideState);
     }
 }
