@@ -10,8 +10,8 @@ public class PlayerIdleState : PlayerGroundedState
 
     public override void Enter()
     {
-        player.SetVelocity(0, player.rb.velocity.y); // 进入Idle时水平速度归0
         base.Enter();
+        player.zeroVelocity(); // 进入Idle时水平速度归0
     }
 
     public override void Exit()
@@ -23,14 +23,9 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.Update();
 
-        if (xInput != 0)
+        if (xInput != 0 && !player.isBusy) // 有水平输入且不忙碌时，才进入移动状态
         {
             stateMachine.ChangeState(player.moveState);
-        }
-
-        if (rb.velocity.y != 0)
-        {   // 悬空则进入airState
-            stateMachine.ChangeState(player.airState);
         }
     }
 }
