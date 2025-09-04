@@ -18,7 +18,6 @@ public class PlayerPrimaryAttackState : PlayerState
         if (comboCounter > 2 || Time.time - lastTimeAttack > comboWindow)
             comboCounter = 0;
 
-
         player.anim.SetInteger("ComboCounter", comboCounter);
 
         float attackDir = player.facingDir;

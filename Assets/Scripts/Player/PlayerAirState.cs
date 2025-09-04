@@ -17,7 +17,7 @@ public class PlayerAirState : PlayerState {
     public override void Update() {
         base.Update();
 
-        if (player.IsGroundedDetected()) stateMachine.ChangeState(player.idleState);
+        if (player.IsGroundedDetected() && !player.isJumping) stateMachine.ChangeState(player.idleState);
 
         if (xInput != 0) player.SetVelocity(player.moveSpeed * .8f * xInput, rb.velocity.y); // 空中速度0.8
 

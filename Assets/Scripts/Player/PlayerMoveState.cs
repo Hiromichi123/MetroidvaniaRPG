@@ -27,11 +27,13 @@ public class PlayerMoveState : PlayerGroundedState
         if (xInput == 0)
         {
             stateMachine.ChangeState(player.idleState);
+            return;
         }
 
-        if (rb.velocity.y != 0)
+        if (Mathf.Abs(rb.velocity.y) > .1f)
         {   // 悬空则进入airState
             stateMachine.ChangeState(player.airState);
+            return;
         }
     }
 }

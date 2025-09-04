@@ -11,8 +11,8 @@ public class PlayerJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
         rb.velocity = new Vector2(rb.velocity.x, player.jumpForce);
+        player.StartCoroutine(player.JumpWindow(.1f)); // 起跳状态持续时间，防止误判为落地
     }
 
     public override void Exit()
@@ -24,7 +24,7 @@ public class PlayerJumpState : PlayerState
     {
         base.Update();
 
-        if (rb.velocity.y != 0)
+        if (Mathf.Abs(rb.velocity.y) > .1f)
         {   // 悬空则进入airState
             stateMachine.ChangeState(player.airState);
         }

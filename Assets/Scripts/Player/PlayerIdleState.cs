@@ -11,7 +11,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        player.zeroVelocity(); // 进入Idle时水平速度归0
+        player.zeroVelocity(); // 进入Idle时速度归0
     }
 
     public override void Exit()

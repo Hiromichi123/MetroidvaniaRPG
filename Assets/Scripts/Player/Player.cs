@@ -9,12 +9,13 @@ public class Player : MonoBehaviour {
     public float attackSpeedIncrease; // 攻速增益
     public bool isBusy { get; private set; } // 玩家忙碌状态，防止状态切换过快
     #endregion
-    // 移动量
-    #region Move
-    [Header("移动")]
+    // 移动与跳跃
+    #region Move&Jump
+    [Header("移动与跳跃")]
     [SerializeField] public float moveSpeed;
     [SerializeField] public float jumpForce;
     public int facingDir { get; private set; } = 1;
+    public bool isJumping { get; private set; } = false; // 是否在跳跃中
     private bool facingRight = true;
     #endregion
     // 冲刺量
@@ -92,6 +93,14 @@ public class Player : MonoBehaviour {
         isBusy = true;
         yield return new WaitForSeconds(_seconds);
         isBusy = false;
+    }
+
+    // 玩家起跳状态（协程等待一段时间后更改标志位）
+    public IEnumerator JumpWindow(float _seconds)
+    {
+        isJumping = true;
+        yield return new WaitForSeconds(_seconds);
+        isJumping = false;
     }
 
     // 动画触发
