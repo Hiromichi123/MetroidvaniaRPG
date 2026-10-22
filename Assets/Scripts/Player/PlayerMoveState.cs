@@ -21,8 +21,9 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Update()
     {
         base.Update();
+        if (stateMachine.currentState != this) return;
 
-        player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
+        player.SetVelocity(xInput * player.MovementSpeed, rb.velocity.y);
 
         if (xInput == 0)
         {

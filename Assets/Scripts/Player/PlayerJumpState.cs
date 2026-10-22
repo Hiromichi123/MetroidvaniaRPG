@@ -12,6 +12,7 @@ public class PlayerJumpState : PlayerState
     {
         base.Enter();
         rb.velocity = new Vector2(rb.velocity.x, player.jumpForce);
+        player.NotifyRunnerJump();
         player.StartCoroutine(player.JumpWindow(.1f)); // 起跳状态持续时间，防止误判为落地
     }
 

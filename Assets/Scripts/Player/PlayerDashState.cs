@@ -16,7 +16,7 @@ public class PlayerDashState : PlayerState {
     {
         base.Exit();
 
-        player.SetVelocity(0, rb.velocity.y);
+        if (RunnerGame.Instance == null) player.SetVelocity(0, rb.velocity.y);
     }
 
     public override void Update() {
@@ -26,11 +26,13 @@ public class PlayerDashState : PlayerState {
         if (!player.IsGroundedDetected() && player.IsWallDetected())
         {
             stateMachine.ChangeState(player.wallSlideState);
+            return;
         }
 
         player.SetVelocity(player.dashSpeed * player.dashDir, 0);
 
         // 时间耗尽，回到idleState
-        if (stateTimer < 0) stateMachine.ChangeState(player.idleState);
+        if (stateTimer < 0)
+            stateMachine.ChangeState(player.IsGroundedDetected() ? (PlayerState)player.moveState : player.airState);
     }
 }

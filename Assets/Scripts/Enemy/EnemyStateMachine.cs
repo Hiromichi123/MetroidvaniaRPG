@@ -11,4 +11,11 @@ public class EnemyStateMachine
         currentState = _startState;
         currentState.Enter();
     }
+
+    public void ChangeState(EnemyState _newState)
+    {
+        currentState.Exit();
+        currentState = _newState;
+        currentState.Enter();
+    }
 }

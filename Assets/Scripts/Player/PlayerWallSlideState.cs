@@ -23,9 +23,10 @@ public class PlayerWallSlideState : PlayerState {
             return;
         }
 
-        if (xInput != 0 && xInput != player.facingDir)
+        if (!player.IsWallDetected() || (xInput != 0 && xInput != player.facingDir))
         { // 需要从墙上脱离
             stateMachine.ChangeState(player.idleState);
+            return;
         }
 
         rb.velocity = new Vector2(0, -player.moveSpeed * .5f); // 滑墙速度0.5

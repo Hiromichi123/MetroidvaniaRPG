@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98eb4c8e0c279d40a20b9a0b67e1299, type: 3}
+  m_Name: RegionCatalog
+  m_EditorClassIdentifier: 
+  Regions:
+  - Name: "\u65E7\u57CE"
+    Backdrop: {fileID: 5807959640451789053, guid: 055825c1337a8f54abc75c2c4f81e6a3, type: 3}
+    Enemies:
+    - {fileID: 5255339463232227550, guid: a6d6f1ddb9f4e644e8df371ed387e73b, type: 3}
+    - {fileID: 909210852249211114, guid: 362adfb2f25da744bb48703fc202764d, type: 3}
+    - {fileID: 3346466873937809964, guid: 6717bcd134fb53347a5306cade6c737a, type: 3}
+    - {fileID: 8953210404546686032, guid: 8179aee5a0543904a9d0c73cdd04a00d, type: 3}
+    GroundTint: {r: 1, g: 1, b: 1, a: 1}
+    Decoration: {fileID: 0}
+    ForestLayout: 0
+  - Name: "\u66AE\u8272\u68EE\u6797"
+    Backdrop: {fileID: 3339968739071847039, guid: 7bc8f1173609cde4f8a547aec9c84354, type: 3}
+    Enemies:
+    - {fileID: 5255339463232227550, guid: a6d6f1ddb9f4e644e8df371ed387e73b, type: 3}
+    - {fileID: 8953210404546686032, guid: 8179aee5a0543904a9d0c73cdd04a00d, type: 3}
+    GroundTint: {r: 0.78, g: 0.94, b: 0.8, a: 1}
+    Decoration: {fileID: 21300000, guid: 8a2daccb872fb2440bae1a314624e5e5, type: 3}
+    ForestLayout: 1

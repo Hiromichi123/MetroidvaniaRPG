@@ -22,6 +22,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Update()
     {
         base.Update();
+        if (stateMachine.currentState != this) return;
 
         if (xInput != 0 && !player.isBusy) // 有水平输入且不忙碌时，才进入移动状态
         {

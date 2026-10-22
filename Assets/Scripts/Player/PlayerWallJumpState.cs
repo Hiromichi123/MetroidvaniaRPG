@@ -28,6 +28,7 @@ public class PlayerWallJumpState : PlayerState
         if (stateTimer < 0)
         {   // 悬空或超时，进入airState
             stateMachine.ChangeState(player.airState);
+            return;
         }
 
         if (player.IsGroundedDetected())
